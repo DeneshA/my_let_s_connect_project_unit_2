@@ -46,7 +46,155 @@ Facilitate group discussions and decision-making with built-in features for poll
 
 #ERD
 ![alt text](image.png)
+
+
 #Wireframe
+
+Let’s Connect
+Let’s Connect
+Let’s Connect
+Let’s Connect
+Let’s Connect
+Let’s Connect
+Let’s Connect
+Let’s Connect
+Let’s Connect
+Who you love most
+Who you love most
+Who you love most
+Who you love most
+Who you love most
+Who you love most
+Who you love most
+Who you love most
+Who you love most
+Welcome Denesh
+Welcome Denesh
+Welcome Denesh
+Welcome Denesh
+Welcome Denesh
+Welcome Denesh
+Welcome Denesh
+Welcome Denesh
+Welcome Denesh
+Upcoming Events
+Personalize Profile
+Assignment
+Planning
+Reminder
+Personalize Profile
+Personalize Profile
+Personalize Profile
+Personalize Profile
+Let’s Connect
+Name :
+Name :
+Plan Name
+Name :
+Plan ID
+Name :
+Name
+BDay
+In two days
+Name :
+Who you love most
+E-mail :
+E-mail :
+E-mail :
+E-mail :
+Annivasary
+1 week
+E-mail :
+Task Name :
+Plan Name :
+Name
+Contact :
+Contact :
+Contact :
+Contact :
+Contact :
+Cost
+Cost
+Upcoming Plans
+B.O.B :
+B.O.B :
+B.O.B :
+B.O.B :
+B.O.B :
+Due Date :
+Due Date :
+Family Profile
+Completed
+Family Profile
+Completed
+Family Profile
+Family Profile
+Family Profile
+Family Name :
+Sign in
+Notes
+Sign in
+Notes
+Sign in
+Sign in
+Sign in
+Family Name :
+Sign in
+Family Name :
+Sign in
+Description
+Family Name :
+Sign in
+Family Name :
+Sign in
+Family Code
+Family Code
+Family Code
+Family Code
+Family Code
+Sign in
+Anniversary
+Anniversary
+Anniversary
+Anniversary
+Anniversary
+Sign Up
+Personalize Profile
+Personalize Profile
+Personalize Profile
+Personalize Profile
+Personalize Profile
+Personalize Profile
+Personalize Profile
+Personalize Profile
+Personalize Profile
+Task Management
+Task Management
+Task Management
+Task Management
+Task Management
+Task Management
+Task Management
+Task Management
+Task Management
+Planning
+Planning
+Planning
+Planning
+Planning
+Planning
+Planning
+Planning
+Planning
+Reminder
+Reminder
+Reminder
+Reminder
+Reminder
+Reminder
+Reminder
+Reminder
+Reminder
 
 #Technologies
 
