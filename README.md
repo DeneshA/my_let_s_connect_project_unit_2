@@ -58,6 +58,9 @@ The goal is to integrate Weather and Holiday APIs to enhance the Let's Connect a
 ![alt text](image-6.png)
 
 
+#MVC
+
+![alt text](image-7.png) | ![alt text](image-8.png)
 
 #Technologies
 
