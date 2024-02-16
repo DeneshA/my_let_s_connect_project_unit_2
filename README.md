@@ -32,7 +32,6 @@ Streamline household responsibilities with a built-in task management system, al
 Never miss a special occasion or important event with customizable reminders and notifications for birthdays, anniversaries, and other significant dates.
 
     User Stories :
-
     As a user, I want to set a reminder for a specific event or task, receiving timely notifications to ensure I do not forget important dates or commitments.
 
 
