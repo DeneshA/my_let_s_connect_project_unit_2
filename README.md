@@ -43,11 +43,11 @@ Facilitate group discussions and decision-making with built-in features for poll
 
     As a user, I want to view the shared calendar to see upcoming events, birthdays, and anniversaries, helping me stay informed about important dates within my family.
 
-#Integrating Third-Parth API - Wehter API, Holiday API
+#Implementing Third-Party APIs - Weather API and Holiday API
     
-Aim to connect Weather and Holiday API which may give some flour into this Let'sConnect application. During a planning for  sheduling it is good if you have weather details of the pertuciular date and any special holidays in advance. so that, planning can be moderated acordingly.
+The goal is to integrate Weather and Holiday APIs to enhance the Let's Connect application. When scheduling events, having access to weather information for a specific date and knowledge of any upcoming holidays is valuable. This allows for more informed planning.
 
-    As a User, I want to know the weather condition and any special hiliday details on the specific date i plane to have shedule for an event, so that i can moderate my plans accordingly
+    As a user, I would like to retrieve real-time weather conditions and information about special holidays on a specific date when planning an event. This feature will help me make adjustments to my plans based on the weather and be aware of any significant holidays.
 
 
 #ERD
