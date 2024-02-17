@@ -1,0 +1,83 @@
+body{
+    margin: 0;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    
+}
+.header-banner{
+    /* background-color: darkgreen; */
+    height: 100px;
+    display: flex;
+}
+
+.caption{
+    flex: 1;
+    display: flex;
+    align-items: center;
+}
+h2{
+    color: #74C0FC;
+}
+.top-menu-bar{
+    background-color: White;
+    height: 70px;
+    width: 100%;
+    border:2px solid;
+    border-radius: 3px;
+}
+.logo{
+    margin: 10px 10px;
+    padding: 15px 15px 15px 15px;
+    display: flex;
+    height: 50px;
+    border:3px  solid #74C0FC;
+    align-items: center;
+    border-radius: 3px;
+}
+.main-container{
+    height: 570px;
+    background-color: white;
+}
+
+.botton-mune-bar{
+    height: 100px;
+    width: 100%;
+    background-color: white;
+}
+
+.footer-banner{
+    height: 80px;
+}
+
+.banner-color{
+    background-color: #003366;
+}
+
+.main-coontainer{
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.horizontal-container{
+    display: flex;
+    width: 100%;
+    background-color: antiquewhite;
+}
+ul{
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+}
+
+.top-menu{
+    margin-block-start:auto;
+
+}
+.icon{
+    margin: 35px 5px;
+    padding: 5px 5px;
+
+}
