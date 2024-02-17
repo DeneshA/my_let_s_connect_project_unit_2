@@ -143,14 +143,19 @@ async function update_user_profile(){
 
 //Delete User profile
 delete_btn.addEventListener('click', () => {
-
+    if (!user_name)
+    {
+        console.log('The user name  is invalid or not existing in Db to operate delete funtion')
+        throw new Error('The user name  is invalid or not existing in Db to operate delete funtion')
+    }else {
     delete_user_profile()
-
+    }
 })
 
 
 async function delete_user_profile(){
     try{  
+  
         let validate_existing_user = await axios.get(`http://localhost:3001/users/current/user/${user_name.value}`)
         // console.log(user_name.value)
         if(validate_existing_user.data._id){
@@ -160,10 +165,11 @@ async function delete_user_profile(){
 
             console.log(response)
             console.log("User profile Deleted Sucessffully")
-
+        
         }else {
             //if not exist can register new user profile
             console.log('new User',validate_existing_user)
+            throw new Error('Unable to preform delete operation due to the reson user profile is not existing')
         }
     }
     catch(error)
