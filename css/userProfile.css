@@ -19,9 +19,9 @@ h2{
 }
 .top-menu-bar{
     background-color: White;
-    height: 70px;
-    width: 100%;
-    border:2px solid;
+    height: 100px;
+    width: 99%;
+    border:2px solid #74C0FC;
     border-radius: 3px;
 }
 .logo{
@@ -33,15 +33,22 @@ h2{
     align-items: center;
     border-radius: 3px;
 }
+.user-image{
+    border: 2px solid #74C0FC;
+    border-radius: 50%;
+    height: 90px;
+}
 .main-container{
     height: 570px;
     background-color: white;
+    border: 2px solid #74C0FC;
 }
 
 .botton-mune-bar{
     height: 100px;
-    width: 100%;
+    width: 99%;
     background-color: white;
+    border: 3px solid #74C0FC;
 }
 
 .footer-banner{
