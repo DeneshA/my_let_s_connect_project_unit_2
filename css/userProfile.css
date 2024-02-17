@@ -8,7 +8,13 @@ body{
     height: 100px;
     display: flex;
 }
-
+#username-header{
+    color: #74C0FC;
+}
+.user-pic{
+    height: 95px;
+    width: 50px;
+}
 .caption{
     flex: 1;
     display: flex;
@@ -35,7 +41,7 @@ h2{
 }
 .user-image{
     border: 2px solid #74C0FC;
-    border-radius: 50%;
+    border-radius: 3px;
     height: 90px;
 }
 .main-container{
@@ -45,12 +51,13 @@ h2{
 }
 
 .user-form{
-    background-color: white;
+   margin: 5px;
     
 }
 
 .display-container{
     background-color: white;
+    width: 100%;
 }
 
 .botton-mune-bar{

@@ -13,6 +13,8 @@ const getAllUserProfile = async (request,response) => {
     }
 }
 
+
+
 const createUserProfile = async (request,response) => {
     try{
         // console.log(request.body)
@@ -59,11 +61,40 @@ const deleteUserProfile = async (request,response) => {
     }
 } 
 
+
+const getDetailsByUserName = async (request,response) => {
+    try{
+        // console.log("User profile Details === ",UserProfile)
+        let current_user_name = request.params.name
+        // console.log(request.params.name)
+        // console.log(current_user_name)
+        const usersProfile = await UserProfile.findOne({user_name: current_user_name})
+        response.json(usersProfile)
+
+    }catch(error)
+    {
+        return response.status(500).send(error.message)
+    }
+   
+   
+}
+
+// const findUserByUserName = async (request,respose) => {
+//     try{
+
+//     }
+//     catch(error)
+//     {
+//         return response.status(500).send(error.message)
+//     }
+// }
+
 module.exports ={
 
     getAllUserProfile,
     createUserProfile,
     updateUserProfile,
-    deleteUserProfile
+    deleteUserProfile,
+    getDetailsByUserName
 
 }

@@ -25,7 +25,7 @@
             <ul class="top-menu">
                 <li><i class="fa-solid fa-bars fa-2xl icon"></i></li>
                 <li> USER PROFILE</li>
-                <li> User Name </li>
+                <li> <div id="username-header"></div> </li>
                 <li><div class="user-image"><i class="fa-regular fa-user fa-2xl icon"></i></div></li>
             </ul>
             
@@ -45,6 +45,9 @@
                     <br>
                     <label for="User Name">User Name</label><br>
                     <input type="text" id="user-name">
+                    <br>
+                    <label for="password">Password</label><br>
+                    <input type="text" id="password">
                     <br>
                     <label for="Email">E-Mail</label><br>
                     <input type="text" id="email">
@@ -68,11 +71,20 @@
                     <label for="family code">Family Code</label><br>
                     <input type="text" id="family-code">
                     <br>
+                    <label for="image">Image</label><br>
+                    <input type="text" id="image">
+                    <br>
 
                     <div class="buttons">
                         <ul>
-                            <li><input type="button" id="Submit" value="Submit"></li>
-                            <li><input type="button" id="Delete" value="Delete"></li>
+                            <!-- <li><div id="clear" ><i id="clear" class="fa-solid fa-broom"></i></div></li>
+                            <li><i id="submit" class="fa-solid fa-floppy-disk"></i></li>
+                            <li><i id="update" class="fa-solid fa-pen-to-square"></i></li>
+                            <li><i id="delete" class="fa-solid fa-trash"></i></li> -->
+                            <li><input type="button" id="clear" value="Clear"><i class="fa-solid fa-broom"></i></li>
+                            <li><input type="button" id="submit" value="Submit"><i class="fa-solid fa-floppy-disk"></i></li>
+                            <li><input type="button" id="update" value="Update"><i class="fa-solid fa-pen-to-square"></i></li>
+                            <li><input type="button" id="delete" value="Delete"><i class="fa-solid fa-trash"></i></li>
                         </ul>
                     </div>
 
@@ -91,7 +103,7 @@
                 <li><i class="fa-solid fa-list fa-2xl icon"></i></li>
                 <li><i class="fa-regular fa-bell fa-2xl icon"></i></li>
                 <li><i class="fa-regular fa-address-card fa-2xl icon"></i></li>
-                <!-- <li><i class="fa-regular fa-user icon"></i>v</li> -->
+                <li><i class="fa-solid fa-house-user fa-2xl icon"></i></li>
                 <li><i class="fa-solid fa-users fa-2xl icon"></i></li>
 
             </ul>
