@@ -44,6 +44,15 @@ h2{
     border: 2px solid #74C0FC;
 }
 
+.user-form{
+    background-color: white;
+    
+}
+
+.display-container{
+    background-color: white;
+}
+
 .botton-mune-bar{
     height: 100px;
     width: 99%;
@@ -88,3 +97,21 @@ ul{
     padding: 5px 5px;
 
 }
+/* 
+@media only screen and (max-width: 768px) {
+    .header-banner {
+       
+    }
+
+    .top-menu-bar {
+       
+    }
+
+    .main-container {
+       
+    }
+
+    .botton-mune-bar {
+      
+    }
+} */
