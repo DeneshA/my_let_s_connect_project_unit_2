@@ -12,9 +12,9 @@ const userProfileSchema = new Schema(
         dob:{type: Date,default: Date.now},
         contact:{type:String, required: false}, 
         gender:{type:String,required:false},
-        image:{type:String,required:false}
-        // address:{type:Schema.Types.ObjectId, ref:'address'},
-        // family_id: {type:Schema.Types.ObjectId, ref:'family'},
+        image:{type:String,required:false},
+        address_id:{type:Schema.Types.ObjectId, ref:'address'},
+        family_id: {type:Schema.Types.ObjectId, ref:'familyProfile'},
     },
     {
         timestamps:true

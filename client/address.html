@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script defer src="../js/address.js"></script>   
+    <link rel="stylesheet" type="text/css" href="../css/template.css">
+    <script src="https://kit.fontawesome.com/b501d4a7f5.js" crossorigin="anonymous"></script>
+
+    <title>User Profile</title>
+</head>
+
+    <header>
+        <div class="header-banner banner-color">
+            <div class="logo">
+                <i class="fa-solid fa-people-roof fa-2xl icon" style="color: #74C0FC;"></i>
+            </div>
+            <div class="caption">
+                <h2>Let's Connect</h2>
+            </div>
+            
+        </div>
+        <div class="top-menu-bar">
+            <ul class="top-menu">
+                <li><i class="fa-solid fa-bars fa-2xl icon"></i></li>
+                <li> ADDRESS</li>
+                <li> <div id="username-header"></div> </li>
+                <li><div class="user-image"><i class="fa-regular fa-user fa-2xl icon"></i></div></li>
+            </ul>
+            
+        </div>
+    </header>
+    
+<body>
+    <div class="main-container">
+        <div class="horizontal-container">
+            <div class="display-container">
+                <form id="user-form" class="user-form" action="">
+                    <label for="Type">Type</label><br>
+                    <input type="text" id="type">
+                    <br>
+                    <label for="Unit_no">Unit/Appartment No.</label><br>
+                    <input type="text" id="unit-no">
+                    <br>
+                    <label for="Street_name_1">Street Name</label><br>
+                    <input type="text" id="street-name-1">
+                    <br>
+                    <label for="Street_name_2">Street Name</label><br>
+                    <input type="text" id="street-name-2">
+                    <br>
+                    <label for="City">City</label><br>
+                    <input type="text" id="city">
+                    <br>
+                    <label for="Provience">Provience</label><br>
+                    <input type="text" id="provience">
+                    <br>
+                    <label for="Country">Country</label><br>
+                    <input type="text" id="country_a">
+                    <br>
+                    <label for="Contry_code">Country Code</label><br>
+                    <input type="text" id="country-code">
+                    <br>
+                    <label for="Postal_code">Postal Code</label><br>
+                    <input type="text" id="postal-code">
+                    <br>
+                   
+
+                    <!-- <div class="buttons">
+                        <ul>
+                            <li><div id="clear" ><i id="clear" class="fa-solid fa-broom fa-2xl icon"></i></div></li>
+                            <li><i id="submit" class="fa-solid fa-floppy-disk fa-2xl icon"></i></li>
+                            <li><i id="update" class="fa-solid fa-pen-to-square fa-2xl icon"></i></li>
+                            <li><i id="delete" class="fa-solid fa-trash fa-2xl icon"></i></li>
+                           
+                        </ul>
+                        <div id="alert-msg"></div>
+                    </div> -->
+
+                </form>
+            </div>
+            <!-- <div class="left-conrainer">H-Left</div> -->
+            <!-- <div class="right-container">H-Right</div> -->
+        </div>
+        <!-- <div class="vertical-container">V-C</div> -->
+    </div>
+    <footer>
+        <nav class="botton-mune-bar">
+            <div class="buttons">
+                <ul>
+                    <li><div id="clear" ><i id="clear" class="fa-solid fa-broom fa-2xl icon"></i></div></li>
+                    <li><i id="submit" class="fa-solid fa-floppy-disk fa-2xl icon"></i></li>
+                    <li><i id="update" class="fa-solid fa-pen-to-square fa-2xl icon"></i></li>
+                    <li><i id="delete" class="fa-solid fa-trash fa-2xl icon"></i></li>
+                    <!-- <li><input type="button" id="clear" value="Clear"><i class="fa-solid fa-broom corsor"></i></li> -->
+                    <!-- <li><input type="button" id="submit" value="Submit"><i class="fa-solid fa-floppy-disk corsor"></i></li> -->
+                    <!-- <li><input type="button" id="update" value="Update"><i class="fa-solid fa-pen-to-square corsor"></i></li>
+                    <li><input type="button" id="delete" value="Delete"><i class="fa-solid fa-trash corsor"></i></li> -->
+                </ul>
+                <div id="alert-msg"></div>
+            </div>
+            <ul class="bottom-menu">
+                <li><i id="home" class="fa-solid fa-house fa-2xl icon"></i></li>
+                <li><i id="event" class="fa-solid fa-calendar-days fa-2xl icon"></i></li>
+                <li><i id="task" class="fa-solid fa-list fa-2xl icon"></i></li>
+                <li><i id="reminder" class="fa-regular fa-bell fa-2xl icon"></i></li>
+                <li><i id="address" class="fa-regular fa-address-card fa-2xl icon"></i></li>
+                <li><i id="user" class="fa-solid fa-house-user fa-2xl icon"></i></li>
+                <li><i id="family" class="fa-solid fa-users fa-2xl icon"></i></li>
+
+
+            </ul>
+        </nav>
+        <div class="footer-banner banner-color"></div>
+    </footer>
+</body>
+</html>

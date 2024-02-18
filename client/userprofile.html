@@ -66,10 +66,14 @@
                     <input type="text" id="contact">
                     <br>
                     <label for="Address">Address</label><br>
-                    <input type="text" id="address">
+                    <!-- <input type="text" id="address"> -->
+                    <select id="address-list" name="address list">
+                      </select>
                     <br>
-                    <label for="family code">Family Code</label><br>
-                    <input type="text" id="family-code">
+                    <label for="family code">Family Name | Family Code</label><br>
+                    <!-- <input type="text" id="family-code"> -->
+                    <select id="family-list" name="family list">
+                    </select>
                     <br>
                     <label for="image">Image</label><br>
                     <input type="text" id="image">
@@ -77,34 +81,27 @@
 
                     <div class="buttons">
                         <ul>
-                            <li><div id="clear" ><i id="clear" class="fa-solid fa-broom fa-2xl icon"></i></div></li>
+                            <li><i id="clear" class="fa-solid fa-broom fa-2xl icon"></i></li>
                             <li><i id="submit" class="fa-solid fa-floppy-disk fa-2xl icon"></i></li>
                             <li><i id="update" class="fa-solid fa-pen-to-square fa-2xl icon"></i></li>
                             <li><i id="delete" class="fa-solid fa-trash fa-2xl icon"></i></li>
-                            <!-- <li><input type="button" id="clear" value="Clear"><i class="fa-solid fa-broom corsor"></i></li> -->
-                            <!-- <li><input type="button" id="submit" value="Submit"><i class="fa-solid fa-floppy-disk corsor"></i></li> -->
-                            <!-- <li><input type="button" id="update" value="Update"><i class="fa-solid fa-pen-to-square corsor"></i></li>
-                            <li><input type="button" id="delete" value="Delete"><i class="fa-solid fa-trash corsor"></i></li> -->
                         </ul>
+                        <div id="alert-msg"></div>
                     </div>
-
                 </form>
             </div>
-            <!-- <div class="left-conrainer">H-Left</div> -->
-            <!-- <div class="right-container">H-Right</div> -->
         </div>
-        <!-- <div class="vertical-container">V-C</div> -->
     </div>
     <footer>
         <nav class="botton-mune-bar">
             <ul class="bottom-menu">
-                <li><i class="fa-solid fa-house fa-2xl icon"></i></li>
-                <li><i class="fa-solid fa-calendar-days fa-2xl icon"></i></li>
-                <li><i class="fa-solid fa-list fa-2xl icon"></i></li>
-                <li><i class="fa-regular fa-bell fa-2xl icon"></i></li>
-                <li><i class="fa-regular fa-address-card fa-2xl icon"></i></li>
-                <li><i class="fa-solid fa-house-user fa-2xl icon"></i></li>
-                <li><i class="fa-solid fa-users fa-2xl icon"></i></li>
+                <li><i id="home" class="fa-solid fa-house fa-2xl icon"></i></li>
+                <li><i id="event" class="fa-solid fa-calendar-days fa-2xl icon"></i></li>
+                <li><i id="task" class="fa-solid fa-list fa-2xl icon"></i></li>
+                <li><i id="reminder" class="fa-regular fa-bell fa-2xl icon"></i></li>
+                <li><i id="address" class="fa-regular fa-address-card fa-2xl icon"></i></li>
+                <li><i id="user" class="fa-solid fa-house-user fa-2xl icon"></i></li>
+                <li><i id="family" class="fa-solid fa-users fa-2xl icon"></i></li>
 
             </ul>
         </nav>

@@ -7,6 +7,7 @@ let anniversary = document.querySelector('#anniversary')
 let user_name = document.querySelector('#user-name')
 let full_Name = document.querySelector('#full-name')
 let relationship = document.querySelector('#relationship')
+let alert_msg = document.querySelector('#alert-msg')
 
 //Button Web Element
 let clear_btn = document.querySelector('#clear')
@@ -120,6 +121,7 @@ submit_btn.addEventListener('click', () => {
 async function create_family_members (){
     try{
     //validation
+
         let data_file = {
                         "family_name": family_name.value,
                         "family_code": family_code.value,
@@ -130,13 +132,16 @@ async function create_family_members (){
 
         let  response = await axios.post('http://localhost:3001/families',data_file)
         //Need to update User profile on Family Id
-
-        // console.log(response)
-        console.log("Family profile created Sucessfully")
+        if(response){
+        
+            alert_msg.innerHTML = `<h4>Family profile created Successfully</h4>`
+        }else{
+            alert_msg.innerHTML = `<h4>Unable to Save! Invalid Family profile</h4>`
+        }
     }
     catch(error)
     {
-        throw new Error("Invalid family data",error.message)
+        throw new Error("Invalid family profile",error.message)
     }
 
 }
@@ -159,23 +164,68 @@ async function update_family_profile(){
         //let  validate_existing_family = await axios.get(`http://localhost:3001/families/family/?family_code=${family_code.value}&current_UID=${Current_UID}`)
         let  validate_existing_family = await axios.get(`http://localhost:3001/families/family?current_UID=${Current_UID}`)
 
-        console.log(validate_existing_family)
+        // console.log(validate_existing_family)
         // console.log(Current_UID)
    
         if(validate_existing_family){
             //if user existing then update the user profile
             let  response = await axios.put(`http://localhost:3001/families/${validate_existing_family.data._id}`,data_file)
 //   //Need to update User profile on Family Id (But noe  mandertory)
-            console.log(response)
-            console.log("Family profile updated Sucessffully")
-
-        }else {
-            //if not exist can register new user profile
-            console.log('new User',validate_existing_family)
+            if(response){
+                    
+                alert_msg.innerHTML = `<h4>Family profile Updated Successfully</h4>`
+            }else{
+                alert_msg.innerHTML = `<h4>Unable to Update! Invalid Family profile</h4>`
+            }
         }
     }
     catch(error)
     {
-        console.error("Error loading family profile:", error.message)
+       throw new Error("Error loading family profile:", error.message)
     }
 }
+
+delete_btn.addEventListener('click', () => {
+    delete_family_profile()
+})
+
+async function delete_family_profile(){
+    try{  
+  
+        let  validate_existing_family = await axios.get(`http://localhost:3001/families/family?current_UID=${Current_UID}`)
+        // console.log(user_name.value)
+        if(validate_existing_family){
+            //if user existing then delete the user profile
+            // console.log("Existing user", validate_existing_user)
+            let  response = await axios.delete(`http://localhost:3001/families/${validate_existing_family.data._id}`)
+
+            if(response){
+                    
+                alert_msg.innerHTML = `<h4>Family profile Deleted Successfully</h4>`
+            }else{
+                alert_msg.innerHTML = `<h4>Unable to Delete! Invalid Family profile</h4>`
+            }
+        }
+    }
+    catch(error)
+    {
+        throw new Error("Error loading family profile:", error.message)
+    }
+}
+
+//// Adding master button event
+let user_icon =document.querySelector('#user')
+let family_icon =document.querySelector('#family')
+let address_icon =document.querySelector('#address')
+let home_icon =document.querySelector('#home')
+let event_icon =document.querySelector('#event')
+let task_icon =document.querySelector('#task')
+let reminder_icon =document.querySelector('#reminder')
+
+user_icon.addEventListener ('click', () => { window.location.href='userprofile.html'})
+family_icon.addEventListener ('click', () => { window.location.href='familyProfile.html'})
+address_icon.addEventListener ('click', () => { window.location.href='address.html'})
+home_icon.addEventListener ('click', () => { window.location.href='index.html'})
+event_icon.addEventListener ('click', () => { window.location.href='event.html'})
+task_icon.addEventListener ('click', () => { window.location.href='assignment.html'})
+reminder_icon.addEventListener ('click', () => { window.location.href='index.html'})

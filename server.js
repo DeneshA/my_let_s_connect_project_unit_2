@@ -7,6 +7,7 @@ const logger = require('morgan');
 
 const userProfielController = require('./controllers/userProfileController')
 const familyProfileController = require('./controllers/familyProfileController')
+const addressesController = require('./controllers/addressController')
 
 
 const PORT = process.env.PORT || 3001
@@ -59,3 +60,17 @@ app.get('/families/family',familyProfileController.get_family_infor_by_code_and_
 
 
 //[[[[[[[[[[[[[[ End ========== Family Profile=========]]]]]]]]]]]]]]
+
+//[[[[[[[[[[[[[[ Start ========== Address =========]]]]]]]]]]]]]]
+
+app.get('/addresses',addressesController.getAlladdress)
+
+app.post('/addresses',addressesController.createAddress)
+
+app.put('/addresses/:id',addressesController.updateAddress)
+
+app.delete('/addresses/:id',addressesController.deleteAddress)
+
+app.get('/addresses/address',addressesController.get_an_Address_by_unit_and_street_name)
+//[[[[[[[[[[[[[[ End ========== Address =========]]]]]]]]]]]]]]
+
