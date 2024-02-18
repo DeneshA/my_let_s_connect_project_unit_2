@@ -1,0 +1,28 @@
+
+table{
+    
+    border-spacing: 1px ;
+    text-align: center;
+    padding: 10px;
+    max-width: 595px;
+    border-collapse: separate;
+}
+
+th,td{
+    padding: 15px 15px  15px 15px;
+    position: sticky;
+    /* color: #59bbe4; */
+}
+th{
+    background-color:#003366;
+    color: #74C0FC;
+    font-weight: 400;
+}
+.publicHoliday-table{
+
+    max-height: 300px;
+    width: 100%;
+    overflow-y: auto;
+    scroll-behavior: smooth;
+
+}

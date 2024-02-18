@@ -3,7 +3,7 @@ const { UserProfile } = require('../models')
 
 const getAllUserProfile = async (request,response) => {
     try{
-        console.log("User profile === ",UserProfile)
+        // console.log("User profile === ",UserProfile)
 
         const usersProfile = await UserProfile.find({})
         response.json(usersProfile)
@@ -79,6 +79,20 @@ const getDetailsByUserName = async (request,response) => {
    
 }
 
+//Get Full Name using id
+const getFullNameById = async (request,response) => {
+    try{
+        // console.log("User profile === ",UserProfile)
+        const {id} = request.params
+       
+        const usersProfile = await UserProfile.findById(id)
+        return response.status(200).json(usersProfile)
+    }catch(error)
+    {
+        return response.status(500).send(error.message)
+    }
+}
+
 // const findUserByUserName = async (request,respose) => {
 //     try{
 
@@ -95,6 +109,7 @@ module.exports ={
     createUserProfile,
     updateUserProfile,
     deleteUserProfile,
-    getDetailsByUserName
+    getDetailsByUserName,
+    getFullNameById
 
 }

@@ -59,7 +59,7 @@ async function load_current_user_profile(){
     }
     catch(error)
     {
-        console.error("Error loading user profile:", error)
+        console.error("Error loading user profile:", error.message)
     }
 }
 

@@ -6,6 +6,7 @@ const logger = require('morgan');
 // require() imports and middleware here ^ ///////
 
 const userProfielController = require('./controllers/userProfileController')
+const familyProfileController = require('./controllers/familyProfileController')
 
 
 const PORT = process.env.PORT || 3001
@@ -33,6 +34,21 @@ app.delete('/users/:id',userProfielController.deleteUserProfile)
 
 app.get('/users/current/user/:name',userProfielController.getDetailsByUserName)
 
+app.get('/users/user/:id',userProfielController.getFullNameById)
 
 //[[[[[[[[[[[[[[ End ==========User Profile=========]]]]]]]]]]]]]]
 
+//[[[[[[[[[[[[[[ Start ========== Family Profile=========]]]]]]]]]]]]]]
+
+app.get('/families',familyProfileController.gettAllFimilieProfile)
+
+app.post('/families',familyProfileController.createFamilyProfile)
+
+app.put('/families/:id',familyProfileController.updateFamilyProfile)
+
+app.delete('/families/:id',familyProfileController.deletefamilyProfile)
+
+//Call the Family Detal by family Code
+app.get('/families/family/code/:name',familyProfileController.get_familY_infor_by_family_code)
+
+//[[[[[[[[[[[[[[ End ========== Family Profile=========]]]]]]]]]]]]]]
