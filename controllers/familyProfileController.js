@@ -53,6 +53,10 @@ const deletefamilyProfile = async (request,response) => {
 const get_familY_infor_by_family_code = async (request,response) => {
     try{
         const family_code = request.params.name
+        if(!family_code)
+        {
+            throw new Error("family_code is required parameters!")
+        }
         // console.log(family_code)
         const family_info = await FamilyProfile.find({family_code:family_code})
         console.log(family_info)
@@ -66,12 +70,35 @@ const get_familY_infor_by_family_code = async (request,response) => {
     }
 }
 
+const get_family_infor_by_code_and_UID = async (request,response) => {
+   try{ 
+    //const family_code = request.query.family_code
+    const current_UID = request.query.current_UID
+    if(!current_UID)
+    {
+        throw new Error("family_code and current_UID are required parameters!")
+    }
+    const  family_info = await FamilyProfile.findOne({user_id:current_UID})
+    // const  family_info = await FamilyProfile.find({ family_code:family_code,current_UID:current_UID})
+    // console.log(family_info)
+    if(current_UID){
+        return response.status(200).json(family_info)
+    } else {
+        throw new Error("Unable to find family information for the provided parameters")
+    }}
+    catch(error) {
+        return response.status(500).send(error.message)
+    }
+
+}
+
 module.exports = {
 
     gettAllFimilieProfile,
     createFamilyProfile,
     updateFamilyProfile,
     deletefamilyProfile,
-    get_familY_infor_by_family_code
+    get_familY_infor_by_family_code,
+    get_family_infor_by_code_and_UID
 
 }

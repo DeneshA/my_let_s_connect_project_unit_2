@@ -51,4 +51,11 @@ app.delete('/families/:id',familyProfileController.deletefamilyProfile)
 //Call the Family Detal by family Code
 app.get('/families/family/code/:name',familyProfileController.get_familY_infor_by_family_code)
 
+//Get family profile id of each child records
+// app.get('/families/family/?family_code=code&current_UID=uid',familyProfileController.get_family_infor_by_code_and_UID)
+// app.get('/families/family/',familyProfileController.get_family_infor_by_code_and_UID)
+app.get('/families/family',familyProfileController.get_family_infor_by_code_and_UID)
+
+
+
 //[[[[[[[[[[[[[[ End ========== Family Profile=========]]]]]]]]]]]]]]

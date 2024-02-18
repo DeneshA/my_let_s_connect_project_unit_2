@@ -108,7 +108,12 @@ ul{
 #clear{
     cursor: pointer;
 }
-
+#submit{
+    cursor: pointer;
+}
+#update{
+    cursor: pointer;
+}
 #delete{
     cursor: pointer;
 }
