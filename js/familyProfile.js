@@ -8,6 +8,7 @@ let user_name = document.querySelector('#user-name')
 let full_Name = document.querySelector('#full-name')
 let relationship = document.querySelector('#relationship')
 let alert_msg = document.querySelector('#alert-msg')
+let family_table = document.querySelector('.family-table')
 
 //Button Web Element
 let clear_btn = document.querySelector('#clear')
@@ -22,6 +23,20 @@ family_code.addEventListener('change', () => {
     load_current_family_profile_by_Family_Code()
 
 })
+clear_btn.addEventListener('click', () => {
+    call_clear()
+})
+
+async function call_clear(){
+    family_name.value = ""
+    family_code.value = ""
+    anniversary.value = ""
+    user_name.value = ""
+    full_Name.value = ""
+    relationship.value = ""
+    family_table.innerHTML = ""
+
+}
 
 async function load_current_family_profile_by_Family_Code (){
     try{
@@ -33,7 +48,7 @@ async function load_current_family_profile_by_Family_Code (){
         let list_of_family_menbers = familyResponse.data
         if (list_of_family_menbers.length > 0)
         {
-            create_Dynamic_Table(['User Name', 'Full Name', 'Relationship'],list_of_family_menbers,'.family-table')
+            create_Dynamic_Table(['User Name', 'Full Name', 'Relationship'],list_of_family_menbers,family_table)
         }
     }catch(error)
     {
@@ -87,7 +102,8 @@ try{
    }
 
     //dynamic_Table.setAttribute('class','border-table')
-    document.querySelector(getElement).appendChild(dynamic_Table)
+    // document.querySelector(getElement).appendChild(dynamic_Table)
+    family_table.appendChild(dynamic_Table)
 }
 catch (error){
     console.log(`Found an error :  ${error}`)
@@ -115,7 +131,13 @@ async function findUserByUserName() {
 }
 
 submit_btn.addEventListener('click', () => {
-    create_family_members()
+    if(!family_name.value || !family_code.value || !anniversary.value || !user_name.value || !relationship.value)
+    {
+        alert_msg.innerHTML = `<h4>Except Relationship all the other fields are mandetory to Submit</h4>`
+        
+    }else{
+        create_family_members()
+    }
 })
 
 async function create_family_members (){
@@ -131,7 +153,11 @@ async function create_family_members (){
                         }
 
         let  response = await axios.post('http://localhost:3001/families',data_file)
+
         //Need to update User profile on Family Id
+        // let user_data_file = {}
+        // let userResponse = await axios.put(`http://localhost:3001/users/${Current_UID}`,)
+
         if(response){
         
             alert_msg.innerHTML = `<h4>Family profile created Successfully</h4>`
@@ -147,7 +173,13 @@ async function create_family_members (){
 }
 
 update_btn.addEventListener('click', () => {
+    if(!family_name.value || !family_code.value || !anniversary.value || !user_name.value || !relationship.value)
+    {
+        alert_msg.innerHTML = `<h4>Except Relationship all the other fields are mandetory to Submit</h4>`
+        
+    }else{
     update_family_profile()
+    }
 })
 
 async function update_family_profile(){
@@ -186,7 +218,13 @@ async function update_family_profile(){
 }
 
 delete_btn.addEventListener('click', () => {
+    if(!family_name.value || !family_code.value || !anniversary.value || !user_name.value || !relationship.value)
+    {
+        alert_msg.innerHTML = `<h4>Except Relationship all the other fields are mandetory to Submit</h4>`
+        
+    }else{
     delete_family_profile()
+    }
 })
 
 async function delete_family_profile(){

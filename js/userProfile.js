@@ -59,6 +59,7 @@ async function clear(){
     current_address=""
     load_all_address()
     load_all_family_profile()
+    alert_msg.innerHTML=""
 }
 
 //load all the Family Profile
@@ -146,9 +147,13 @@ async function load_current_user_profile(){
 }
 
 submit_btn.addEventListener ('click',() => {
-    
-    save_and_update_user_profile()
+    if(!first_name.value || !last_name.value || !user_name.value || !password_u.value)
+    {
+        alert_msg.innerHTML = `<h4>First name,Last Name,User Name & password mandetory fields to Submit</h4>`
 
+    }else{
+        save_and_update_user_profile()
+    }
 })
 
 
@@ -186,7 +191,13 @@ async function save_and_update_user_profile(){
 
 //Update user profile
 update_btn.addEventListener('click', () => {
+    if(!first_name.value || !last_name.value || !user_name.value || !password_u.value)
+    {
+        alert_msg.innerHTML = `<h4>First name,Last Name,User Name & password mandetory fields to Update</h4>`
+        
+    }else{
     update_user_profile()
+    }
 })
 
 async function update_user_profile(){
@@ -229,11 +240,11 @@ async function update_user_profile(){
 
 //Delete User profile
 delete_btn.addEventListener('click', () => {
-    if (!user_name)
+    if(!first_name.value || !last_name.value || !user_name.value || !password_u.value)
     {
-        console.log('The user name  is invalid or not existing in Db to operate delete funtion')
-        throw new Error('The user name  is invalid or not existing in Db to operate delete funtion')
-    }else {
+        alert_msg.innerHTML = `<h4>First name,Last Name,User Name & password mandetory fields to Submit</h4>`
+        
+    }else{
     delete_user_profile()
     }
 })

@@ -18,8 +18,23 @@ let update_btn = document.querySelector('#update')
 let delete_btn = document.querySelector('#delete')
 
 let current_address_UID =""
-
+clear_btn.addEventListener('click', () => {
+    call_clear()
+})
 //http://localhost:3001/addresses/address?unit_no=45&street_name=Littet Ilford Lane
+async function call_clear (){
+            type.value = ""
+            unit_no.value = ""
+            street_name_1.value = ""
+            street_name_2.value = ""
+            city.value = ""
+            provience.value = ""
+            country.value = ""
+            country_code.value = ""
+            postal_code.value = ""
+            current_address_UID = ""
+}
+
 
 street_name_1.addEventListener('change', () => {
     if(unit_no.value==="") 
@@ -52,7 +67,7 @@ async function getAddress () {
             country_code.value = response.data.country_code
             postal_code.value = response.data.postal_code
             current_address_UID = response.data._id
-            console.log(current_address_UID)
+            // console.log(current_address_UID)
         }
         throw new  Error("There are no address found in the system ",error.message)
 
@@ -64,7 +79,13 @@ async function getAddress () {
 
 
 submit_btn.addEventListener('click', () => {
+    if(!type.value || !unit_no.value || !street_name_1.value || !city.value || !provience.value || !country.value || !postal_code)
+    {
+        alert_msg.innerHTML = `<h4>Except 2nd Street name & Country code all the other fields are mandetory to Submit</h4>`
+        
+    }else{
     create_address()
+    }
 })
 
 async function create_address (){
@@ -98,7 +119,13 @@ async function create_address (){
 
 
 update_btn.addEventListener('click', () => {
+    if(!type.value || !unit_no.value || !street_name_1.value || !city.value || !provience.value || !country.value || !postal_code)
+    {
+        alert_msg.innerHTML = `<h4>Except 2nd Street name & Country code all the other fields are mandetory to Submit</h4>`
+        
+    }else{
     update_address()
+    }
 })
 
 async function update_address(){
@@ -139,7 +166,13 @@ async function update_address(){
 
 
 delete_btn.addEventListener('click', () => {
-    delete_address()
+    if(!type.value || !unit_no.value || !street_name_1.value || !city.value || !provience.value || !country.value || !postal_code)
+    {
+        alert_msg.innerHTML = `<h4>Except 2nd Street name & Country code all the other fields are mandetory to Submit</h4>`
+        
+    }else{
+        delete_address()
+    }
 })
 
 async function delete_address(){
