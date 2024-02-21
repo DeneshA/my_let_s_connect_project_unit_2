@@ -92,6 +92,20 @@ const get_family_infor_by_code_and_UID = async (request,response) => {
 
 }
 
+const get_family_infor_by_id = async (request,response) => {
+    try{
+        const { id } = request.params
+        const familiesProfile = await FamilyProfile.findById(id)
+        return response.json(familiesProfile)
+
+    }catch(error)
+    {
+        return response.status(500).send(error.message)
+    }
+
+}
+
+
 module.exports = {
 
     gettAllFimilieProfile,
@@ -99,6 +113,7 @@ module.exports = {
     updateFamilyProfile,
     deletefamilyProfile,
     get_familY_infor_by_family_code,
-    get_family_infor_by_code_and_UID
+    get_family_infor_by_code_and_UID,
+    get_family_infor_by_id
 
 }

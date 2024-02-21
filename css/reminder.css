@@ -1,4 +1,7 @@
-body{
+
+  
+  
+ body{
     margin: 0;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     
@@ -86,7 +89,7 @@ h2{
     width: 100%;
     background-color: antiquewhite;
 }
-ul{
+.menu-ul{
     list-style: none;
     padding: 0;
     display: flex;
@@ -140,3 +143,42 @@ ul{
       
     }
 } */
+ 
+ 
+ /* Long weekend listing  */
+    
+  .display-container{
+
+    /* font-size: 16px; */
+    display: block;
+    /* margin: 0 ; */
+    text-align: left;
+    overflow-y: scroll;
+    scroll-behavior: smooth; 
+    max-height: 500px ;
+   
+     
+  }
+  /* .menu_ul{
+      margin-top: 5px;
+    border: 1px solid;
+    border-radius: 10px;
+    background-color: antiquewhite;
+  } */
+  ul .li-long{
+    /* margin-top: 5px;
+    border: 1px solid;
+    border-radius: 10px;
+    background-color: antiquewhite; */
+  }
+  li{
+
+
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    font-size: 12px;
+    padding: 5px;
+    
+
+  }

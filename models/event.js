@@ -11,9 +11,10 @@ const eventSchema = new Schema (
         cost_estimation: {type: Number,required: false},
         weather_condition: {type: String,required: false},
         specialday_Note: {type:String,required:false},
-        Special_notes: {type:String,require:false},
+        special_notes: {type:String,require:false},
         invite_families_id: [{type:Schema.Types.ObjectId, ref:'familyProfile'}],
-        user_id: {type:Schema.Types.ObjectId, ref:'userProfile'}
+        user_id: {type:Schema.Types.ObjectId, ref:'userProfile'},
+        address_id: {type:Schema.Types.ObjectId, ref:'address'},
     },
     {
         timestamps: true

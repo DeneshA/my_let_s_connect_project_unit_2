@@ -44,6 +44,8 @@ app.get('/users/user/:id',userProfielController.getFullNameById)
 
 app.get('/families',familyProfileController.gettAllFimilieProfile)
 
+app.get('/families/family/:id',familyProfileController.get_family_infor_by_id)
+
 app.post('/families',familyProfileController.createFamilyProfile)
 
 app.put('/families/:id',familyProfileController.updateFamilyProfile)
@@ -93,6 +95,8 @@ app.post('/events',eventController.createEvent)
 app.put('/events/:id',eventController.updateEvent)
 
 app.delete('/events/:id',eventController.deleteEvent)
+
+app.get('/events/event/current/month',eventController.get_event_current_month)
 
 //[[[[[[[[[[[[[[ End ========== Events =========]]]]]]]]]]]]]]
 

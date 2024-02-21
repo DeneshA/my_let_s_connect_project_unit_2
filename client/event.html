@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script defer src="../js/event.js"></script>   
-    <link rel="stylesheet" type="text/css" href="../css/userProfile.css">
+    <link rel="stylesheet" type="text/css" href="../css/template.css">
+    <link rel="stylesheet" type="text/css" href="../css/event.css">
     <script src="https://kit.fontawesome.com/b501d4a7f5.js" crossorigin="anonymous"></script>
 
     <title>Event Planning</title>
@@ -48,6 +49,10 @@
                     <label for="Description">Description</label><br>
                     <input type="text" id="description">
                     <br>
+                    <label for="Address">Address</label><br>
+                    <select id="address-list" name="address list">
+                    </select>
+                    <br>
                     <label for="Completed">Is Completed</label><br>
                     <select id="is-completed" name="is completed">
                         <option value="true">Yes</option>
@@ -69,10 +74,12 @@
                     <label for="Invites Families">Invites Families</label><br>
                     <select id="invite-families-id" name="invite families id">
                       </select>
-                      <input type="button" id="add-member" value="Add Members">
-                      <input type="button" id="remove-member" value="Remove Members">
+                      <input type="button" id="add-member" value="Add Members"><br><br>
+                      <input type="button" id="remove-member" value="Remove last Members">
+                      <input type="button" id="remove-all-member" value="Remove All Members">
                     <br>
-                   
+                   <br>
+                   <br>
                     <!-- <label for="family code">Family Name | Family Code</label><br>
                     <input type="text" id="image">
                     <br> -->

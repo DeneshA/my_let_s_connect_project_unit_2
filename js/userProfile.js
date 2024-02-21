@@ -291,5 +291,5 @@ address_icon.addEventListener ('click', () => { window.location.href='address.ht
 home_icon.addEventListener ('click', () => { window.location.href='index.html'})
 event_icon.addEventListener ('click', () => { window.location.href='event.html'})
 task_icon.addEventListener ('click', () => { window.location.href='assignment.html'})
-reminder_icon.addEventListener ('click', () => { window.location.href='index.html'})
+reminder_icon.addEventListener ('click', () => { window.location.href='reminder.html'})
 

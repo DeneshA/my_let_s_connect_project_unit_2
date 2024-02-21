@@ -96,6 +96,28 @@ const deleteEvent = async (request,response) => {
     }
 } 
 
+const get_event_current_month = async (request,response) => {
+    try{
+        
+        //today
+        const currentDate = new Date()
+
+        const currentDayofMonth = new Date(currentDate.getFullYear(),currentDate.getMonth(),currentDate.getDay())
+
+        const firstDayofNextMonth = new Date(currentDate.getFullYear(),currentDate.getMonth() + 3, 1)
+
+        const all_event = await Event.find({due_date:{$gte:currentDayofMonth,$lt:firstDayofNextMonth}}).sort({due_date:1})
+
+        if(all_event){
+            return response.status(200).json(all_event)
+        }
+        throw new Error("No Event found for the current month !")
+    }catch(error)
+    {
+        return response.status(500).send(error.message)
+    }
+} 
+
 module.exports = {
 
     getAllEvents,
@@ -104,6 +126,7 @@ module.exports = {
     updateEvent,
     deleteEvent,
     get_All_Active_events_by_user_id,
-    getAllEventsById
+    getAllEventsById,
+    get_event_current_month
 
 }
