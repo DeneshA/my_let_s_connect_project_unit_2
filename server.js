@@ -8,6 +8,7 @@ const logger = require('morgan');
 const userProfielController = require('./controllers/userProfileController')
 const familyProfileController = require('./controllers/familyProfileController')
 const addressesController = require('./controllers/addressController')
+const eventController = require('./controllers/eventController')
 
 
 const PORT = process.env.PORT || 3001
@@ -73,4 +74,25 @@ app.delete('/addresses/:id',addressesController.deleteAddress)
 
 app.get('/addresses/address',addressesController.get_an_Address_by_unit_and_street_name)
 //[[[[[[[[[[[[[[ End ========== Address =========]]]]]]]]]]]]]]
+
+
+
+//[[[[[[[[[[[[[[ Start ========== Events =========]]]]]]]]]]]]]]
+//All the events completed and non-completed
+app.get('/events',eventController.getAllEvents)
+
+app.get('/events/:id',eventController.getAllEventsById)
+
+//Events which are not completed
+app.get('/events/isactive',eventController.get_All_Active_events) 
+
+app.get('/events/user/:id',eventController.get_All_Active_events_by_user_id)
+
+app.post('/events',eventController.createEvent)
+
+app.put('/events/:id',eventController.updateEvent)
+
+app.delete('/events/:id',eventController.deleteEvent)
+
+//[[[[[[[[[[[[[[ End ========== Events =========]]]]]]]]]]]]]]
 
