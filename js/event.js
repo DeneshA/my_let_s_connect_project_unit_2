@@ -29,13 +29,28 @@ let families_array_list_name = []
 let current_user_id = "65d23e112fd424b3a856be2e"
 let currenct_event_UID = "" 
 
+
+//API Key
+const apiKey = '83c1f2a80ab04d3ebc8141135242501'
+
 load_all_family_profile_members()
 Load_all_events_by_user_id()
 load_all_address_list()
+//get_weather_api()
+Load_Event_reminder_alert()
 
 clear_btn.addEventListener('click', () => {
     call_clear()
 })
+
+async function get_weather_api(){
+    let input = "l6y0v9"
+    let setDate = "2024-02-22"
+    //let response = await axios.get(`http://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${input}&aqi=no`)
+    let response = await axios.get(`http://api.weatherapi.com/v1/future.json?key=${apiKey}&q=${input}&dt=${setDate}`)
+    //https://api.weatherapi.com/v1/future.json?q=l6y0v9&dt=2024-02-21
+    console.log(response.data)
+}
 
 async function call_clear (){
     event_name.value = ""
@@ -59,6 +74,7 @@ async function call_clear (){
     address_list.value =""
     invite_families_id.value=""
     family_table.innerHTML=""
+    Load_Event_reminder_alert()
 
 }
 
@@ -159,6 +175,22 @@ remove_member.addEventListener('click', () => {
     }
     
 })
+//Make an alert 
+async function Load_Event_reminder_alert(){
+
+    let eventResponse = await axios.get(`http://localhost:3001/events/event/current/month`)
+    if(eventResponse)
+    {
+     
+        reminder_icon.setAttribute('style',"color: #63E6BE")
+        // reminder_icon.setAttribute('style',"color: red")
+    }
+    else
+    {
+        reminder_icon.setAttribute('style',"color: black")
+    }
+
+}
 
 
 async function create_Event(){

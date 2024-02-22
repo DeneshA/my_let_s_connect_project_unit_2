@@ -18,6 +18,9 @@ let update_btn = document.querySelector('#update')
 let delete_btn = document.querySelector('#delete')
 
 let current_address_UID =""
+
+Load_Event_reminder_alert()
+
 clear_btn.addEventListener('click', () => {
     call_clear()
 })
@@ -33,6 +36,7 @@ async function call_clear (){
             country_code.value = ""
             postal_code.value = ""
             current_address_UID = ""
+            Load_Event_reminder_alert()
 }
 
 
@@ -197,6 +201,23 @@ async function delete_address(){
     {
         throw new Error("Error loading address:", error.message)
     }
+}
+
+//Make an alert 
+async function Load_Event_reminder_alert(){
+
+    let eventResponse = await axios.get(`http://localhost:3001/events/event/current/month`)
+    if(eventResponse)
+    {
+     
+        reminder_icon.setAttribute('style',"color: #63E6BE")
+        // reminder_icon.setAttribute('style',"color: red")
+    }
+    else
+    {
+        reminder_icon.setAttribute('style',"color: black")
+    }
+
 }
 
 //// Adding master button event

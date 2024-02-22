@@ -130,3 +130,18 @@ ul{
       
     }
 } */
+
+
+  
+.display-container{
+
+    /* font-size: 16px; */
+    display: block;
+    /* margin: 0 ; */
+    text-align: left;
+    overflow-y: scroll;
+    scroll-behavior: smooth; 
+    max-height: 700px ;
+   padding: 15px;
+     
+  }

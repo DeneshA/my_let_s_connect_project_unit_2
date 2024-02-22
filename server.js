@@ -68,6 +68,8 @@ app.get('/families/family',familyProfileController.get_family_infor_by_code_and_
 
 app.get('/addresses',addressesController.getAlladdress)
 
+app.get('/addresses/address/:id',addressesController.getAlladdressById)
+
 app.post('/addresses',addressesController.createAddress)
 
 app.put('/addresses/:id',addressesController.updateAddress)

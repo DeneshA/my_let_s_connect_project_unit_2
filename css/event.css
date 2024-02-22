@@ -20,15 +20,29 @@ th{
 }
 .family-table{
 
-    max-height: 300px;
+    height: 500px;
     width: 100%;
     overflow-y: auto;
     scroll-behavior: smooth;
 
 }
 
+  
+.display-container{
+
+    /* font-size: 16px; */
+    display: block;
+    /* margin: 0 ; */
+    text-align: left;
+    overflow-y: scroll;
+    scroll-behavior: smooth; 
+    max-height: 700px ;
+   padding: 15px;
+     
+  }
+/* 
 .family-table{
 
     overflow-y:scroll;
     height: 150px;
-}
+} */

@@ -18,15 +18,36 @@ async function Load_Event_reminder(){
         let listofEventCurrentMonth = eventResponse.data
         console.log(listofEventCurrentMonth)
         let data_list = ""
-        listofEventCurrentMonth.map((element)=>{
-                data_list +=    `<ul dir="ul-long">
-                                <li class="li-long"> Event : ${element.event_name} </li>
-                                <li class="li-long"> Event Date : ${new Date(element.due_date).toDateString()} </li>
-                                <li class="li-long"> Event Forcast :${element.weather_condition}</li>
-                                <li class="li-long"> Event Forcast :${element.description}</li>
-                                </ul>
-                                `
-        })
+        // listofEventCurrentMonth.map((element)=>{
+        //     let userResponse = await axios.get(`http://localhost:3001//users/user/${current_user_id}`)
+        //         data_list +=    `<ul id="ul-long">
+        //                         <li class="li-long"> Event : ${element.event_name} </li>
+        //                         <li class="li-long"> Event Date : ${new Date(element.due_date).toDateString()} </li>
+        //                         <li class="li-long"> Event Forcast :${element.weather_condition}</li>
+        //                         <li class="li-long"> Event Forcast :${element.description}</li>
+        //                         </ul>
+        //                         `
+        // })
+        for (const element of listofEventCurrentMonth) {
+            // console.log(element)
+            let userResponse = await axios.get(`http://localhost:3001/users/user/${element.user_id}`)
+            // let addressResponse = await axios.get(`http://localhost:3001/addresses/address/${element.address_id}`)
+            //  console.log(userResponse.data.image)
+            //  <li class="li-long"> <img src=${userResponse.data.image}> </li>
+            data_list += `<div>
+                            <div class="container">
+                                <div class="user-image"> <img class="img-user" src=${userResponse.data.image}> </div>
+                                <div class="event_list">
+                                    <ul class="ul-long">                            
+                                        <li class="li-long"> Event : ${element.event_name} </li>
+                                        <li class="li-long"> Event Date : ${new Date(element.due_date).toDateString()} </li>
+                                        <li class="li-long"> Event Forecast :${element.weather_condition}</li>
+                                        <li class="li-long"> Event Description :${element.weather_condition}</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>`
+        }
         // console.log(data_list)
         display_container.innerHTML = data_list
     }

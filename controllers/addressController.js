@@ -10,6 +10,16 @@ const getAlladdress = async (request,response) => {
     }
 }
 
+const getAlladdressById = async (request,response) => {
+    try{
+        const { id } = request.params
+        const address = await Address.findById(id)
+        response.json(address)
+    }catch(error)
+    {
+        return response.status(500).send(error.message)
+    }
+}
 
 const createAddress = async (request,response) => {
     try{
@@ -84,6 +94,7 @@ module.exports = {
     createAddress,
     updateAddress,
     deleteAddress,
-    get_an_Address_by_unit_and_street_name
+    get_an_Address_by_unit_and_street_name,
+    getAlladdressById
 
 }

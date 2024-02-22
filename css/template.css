@@ -54,10 +54,13 @@ h2{
    margin: 5px;
     
 }
-
+/* changed */
 .display-container{
     background-color: white;
     width: 100%;
+    padding: 15px;
+    overflow-y: scroll;
+    scroll-behavior: smooth;
 }
 
 .botton-mune-bar{
@@ -68,7 +71,7 @@ h2{
 }
 
 .footer-banner{
-    height: 80px;
+    height: 200px;
 }
 
 .banner-color{
@@ -104,6 +107,11 @@ ul{
     padding: 5px 5px;
 
 }
+/* .botton-mune-bar{
+    position: fixed;
+    bottom: 0;
+} */
+
 
 #clear{
     cursor: pointer;
@@ -122,9 +130,61 @@ ul{
     cursor: pointer;
 }
 
-/* 
-@media only screen and (max-width: 768px) {
-    .header-banner {
+/* //Responsive feDiffuseLighting */
+@media (min-width:1201px) and (max-width: 1800px) {
+    body{
+        font-size: 30px;
+    }
+    .main-container{
+        height: 800px;
+    }
+    button,select,input {
+        font-size: 30px;
+        width: 500px;
+        height: 50px;
+    }
+}
+
+
+
+@media (min-width: 769px) and (max-width: 1200px) {
+    body{
+        font-size: 25px;
+    }
+    .main-container{
+        height: 800px;
+    }
+ 
+    button,select,input {
+        font-size: 25px;
+        width: 500px;
+        height: 50px;
+    }
+
+}
+
+@media (min-width: 400px) and (max-width: 768px) {
+    body{
+        font-size: 20px;
+    }
+    button,select,input {
+        font-size: 20px;
+        width: 500px;
+        height: 50px;
+    }
+    .main-container{
+        height: 800px;
+    }
+    .display-container{
+        overflow: scroll;
+    }
+
+   
+
+    /* .display-container{
+        overflow-y: scroll;
+    } */
+    /* .header-banner {
        
     }
 
@@ -138,5 +198,5 @@ ul{
 
     .botton-mune-bar {
       
-    }
-} */
+    } */
+}

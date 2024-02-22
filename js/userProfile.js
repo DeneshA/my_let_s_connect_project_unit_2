@@ -33,6 +33,7 @@ let current_address =""
 
 load_all_address()
 load_all_family_profile()
+Load_Event_reminder_alert()
 
 window.onload = () => {
     // load_current_user_profile()    
@@ -60,7 +61,25 @@ async function clear(){
     load_all_address()
     load_all_family_profile()
     alert_msg.innerHTML=""
+    Load_Event_reminder_alert()
 }
+//Make an alert 
+async function Load_Event_reminder_alert(){
+
+    let eventResponse = await axios.get(`http://localhost:3001/events/event/current/month`)
+    if(eventResponse)
+    {
+     
+        reminder_icon.setAttribute('style',"color: #63E6BE")
+        // reminder_icon.setAttribute('style',"color: red")
+    }
+    else
+    {
+        reminder_icon.setAttribute('style',"color: black")
+    }
+
+}
+
 
 //load all the Family Profile
 async function load_all_family_profile(){
