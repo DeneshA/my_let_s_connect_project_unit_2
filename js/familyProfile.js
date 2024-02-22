@@ -54,6 +54,7 @@ async function call_clear(){
     relationship.value = ""
     family_table.innerHTML = ""
     Load_Event_reminder_alert()
+    alert_msg.innerHTML = ""
 
 }
 
@@ -252,9 +253,9 @@ async function update_family_profile(){
 }
 
 delete_btn.addEventListener('click', () => {
-    if(!family_name.value || !family_code.value || !anniversary.value || !user_name.value || !relationship.value)
+    if(!family_name.value || !family_code.value || !user_name.value)
     {
-        alert_msg.innerHTML = `<h4>Except Relationship all the other fields are mandetory to Submit</h4>`
+        alert_msg.innerHTML = `<h4>Family Name, Family Code & UserName are mandetory fields to Delete</h4>`
         
     }else{
     delete_family_profile()
