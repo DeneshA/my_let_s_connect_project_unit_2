@@ -151,7 +151,7 @@ async function findUserByUserName() {
 }
 
 submit_btn.addEventListener('click', () => {
-    if(!family_name.value || !family_code.value || !anniversary.value || !user_name.value || !relationship.value)
+    if(!family_name.value || !family_code.value || !user_name.value || !relationship.value)
     {
         alert_msg.innerHTML = `<h4>Except Relationship all the other fields are mandetory to Submit</h4>`
         
@@ -173,10 +173,14 @@ async function create_family_members (){
                         }
 
         let  response = await axios.post('http://localhost:3001/families',data_file)
+        // let current_family_UID = ""
+        //Find the family_id to update User profile
+        let familyResponse = await axios.get(`http://localhost:3001/families/family/code/${family_code.value}`)
 
-        //Need to update User profile on Family Id
-        // let user_data_file = {}
-        // let userResponse = await axios.put(`http://localhost:3001/users/${Current_UID}`,)
+        //update User profile on Family Id
+        let user_data_file = {"family_id":familyResponse.data[0]._id}
+        console.log("Family id : ",familyResponse.data[0]._id)
+        let userResponse = await axios.put(`http://localhost:3001/users/${Current_UID}`,user_data_file)
 
         if(response){
         
@@ -222,7 +226,17 @@ async function update_family_profile(){
         if(validate_existing_family){
             //if user existing then update the user profile
             let  response = await axios.put(`http://localhost:3001/families/${validate_existing_family.data._id}`,data_file)
-//   //Need to update User profile on Family Id (But noe  mandertory)
+
+                // let current_family_UID = ""
+            //Find the family_id to update User profile
+            let familyResponse = await axios.get(`http://localhost:3001/families/family/code/${family_code.value}`)
+
+            //update User profile on Family Id
+            let user_data_file = {"family_id":familyResponse.data[0]._id}
+            console.log("Family id : ",familyResponse.data[0]._id)
+            let userResponse = await axios.put(`http://localhost:3001/users/${Current_UID}`,user_data_file)
+    
+
             if(response){
                     
                 alert_msg.innerHTML = `<h4>Family profile Updated Successfully</h4>`
@@ -256,6 +270,12 @@ async function delete_family_profile(){
             //if user existing then delete the user profile
             // console.log("Existing user", validate_existing_user)
             let  response = await axios.delete(`http://localhost:3001/families/${validate_existing_family.data._id}`)
+
+           
+            //update User profile on Family Id
+            let user_data_file = {"family_id":""}
+            console.log("Family id : ","-")
+            let userResponse = await axios.put(`http://localhost:3001/users/${Current_UID}`,user_data_file)
 
             if(response){
                     
