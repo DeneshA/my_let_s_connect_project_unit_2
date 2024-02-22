@@ -1,3 +1,4 @@
+
 //Declare Web Element
 let type= document.querySelector('#type')
 let unit_no = document.querySelector('#unit-no')
@@ -9,6 +10,7 @@ let country = document.querySelector('#country_a')
 let country_code = document.querySelector('#country-code')
 let postal_code = document.querySelector('#postal-code')
 let alert_msg = document.querySelector('#alert-msg')
+let address_list = document.querySelector('#address-list')
 
 
 //Button Web Element
@@ -20,6 +22,22 @@ let delete_btn = document.querySelector('#delete')
 let current_address_UID =""
 
 Load_Event_reminder_alert()
+load_all_address()
+
+address_list.addEventListener('click', async () => {
+    try{
+        let response = await axios.get(`http://localhost:3001/addresses/address/${address_list.value}`)
+        unit_no.value = response.data.unit_no
+        street_name_1.value = response.data.street_name_1
+        getAddress()
+    }
+    catch(error){
+        throw new Error("Error loading adress information:", error.message)
+    }
+   
+
+})
+
 
 clear_btn.addEventListener('click', () => {
     call_clear()
@@ -37,8 +55,36 @@ async function call_clear (){
             postal_code.value = ""
             current_address_UID = ""
             Load_Event_reminder_alert()
+            alert_msg.innerHTML =""
+            address_list.value=""
+            load_all_address()
 }
 
+//load all the address
+async function load_all_address(){
+    try{
+        address_list.innerHTML =""
+        let addressResponse = await axios.get('http://localhost:3001/addresses')
+        // console.log(familyResponse.data.length)
+        if (addressResponse)
+        {  
+            for(let i=0;i<addressResponse.data.length;i++ )
+            {
+                let optionalElement = document.createElement('option')
+                //console.log(` Name : ${listOfCodes_n_Countries[0][i].name} Code : ${listOfCodes_n_Countries[0][i].countryCode}  `)
+                optionalElement.value =`${addressResponse.data[i]._id}`
+                optionalElement.text =`${addressResponse.data[i].type} | ${addressResponse.data[i].unit_no} | ${addressResponse.data[i].street_name_1}`
+                address_list.appendChild(optionalElement)
+            }
+        }
+    }
+    catch(error)
+    {
+        throw new Error("Unable to load Address file",error.message)
+    }
+    
+    }
+    
 
 street_name_1.addEventListener('change', () => {
     if(unit_no.value==="") 
@@ -108,7 +154,7 @@ async function create_address (){
         }
         let  response = await axios.post('http://localhost:3001/addresses',data_file)
         if(response){
-                    
+            address_list.value=""
             alert_msg.innerHTML = `<h4>Address Created Successfully</h4>`
         }else{
             alert_msg.innerHTML = `<h4>Unable to Create! Invalid address</h4>`
@@ -155,7 +201,7 @@ async function update_address(){
             if(response){
             //if user existing then update the user profile
             let  updateResponse = await axios.put(`http://localhost:3001/addresses/${response.data._id}`,data_file)
-                    
+            address_list.value=""
                 alert_msg.innerHTML = `<h4>Address Updated Successfully</h4>`
             }else{
                 alert_msg.innerHTML = `<h4>Unable to Update! Invalid Address details</h4>`
@@ -190,7 +236,7 @@ async function delete_address(){
             let  response = await axios.delete(`http://localhost:3001/addresses/${current_address_UID}`)
 
             if(response){
-                    
+                address_list.value=""
                 alert_msg.innerHTML = `<h4>Address Deleted Successfully</h4>`
             }else{
                 alert_msg.innerHTML = `<h4>Unable to Delete! Invalid address details</h4>`
@@ -207,7 +253,7 @@ async function delete_address(){
 async function Load_Event_reminder_alert(){
 
     let eventResponse = await axios.get(`http://localhost:3001/events/event/current/month`)
-    if(eventResponse)
+    if(eventResponse.data.length > 0)
     {
      
         reminder_icon.setAttribute('style',"color: #63E6BE")

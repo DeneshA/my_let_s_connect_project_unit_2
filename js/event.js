@@ -179,7 +179,7 @@ remove_member.addEventListener('click', () => {
 async function Load_Event_reminder_alert(){
 
     let eventResponse = await axios.get(`http://localhost:3001/events/event/current/month`)
-    if(eventResponse)
+    if(eventResponse.data.length > 0)
     {
      
         reminder_icon.setAttribute('style',"color: #63E6BE")

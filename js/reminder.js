@@ -13,21 +13,15 @@ async function Load_Event_reminder(){
     {
         //<i class="fa-regular fa-bell" style="color: #63E6BE;"></i>
         // dynamic_Table.setAttribute('class','border-table')
-        reminder_icon.setAttribute('style',"color: #63E6BE")
+        if(eventResponse.data.length > 0){
+            reminder_icon.setAttribute('style',"color: #63E6BE") 
+        }
+        // reminder_icon.setAttribute('style',"color: #63E6BE")
         // console.log(eventResponse.data)
         let listofEventCurrentMonth = eventResponse.data
         console.log(listofEventCurrentMonth)
         let data_list = ""
-        // listofEventCurrentMonth.map((element)=>{
-        //     let userResponse = await axios.get(`http://localhost:3001//users/user/${current_user_id}`)
-        //         data_list +=    `<ul id="ul-long">
-        //                         <li class="li-long"> Event : ${element.event_name} </li>
-        //                         <li class="li-long"> Event Date : ${new Date(element.due_date).toDateString()} </li>
-        //                         <li class="li-long"> Event Forcast :${element.weather_condition}</li>
-        //                         <li class="li-long"> Event Forcast :${element.description}</li>
-        //                         </ul>
-        //                         `
-        // })
+
         for (const element of listofEventCurrentMonth) {
             // console.log(element)
             let userResponse = await axios.get(`http://localhost:3001/users/user/${element.user_id}`)

@@ -112,7 +112,9 @@ ul{
     bottom: 0;
 } */
 
-
+input{
+    background-color: antiquewhite;
+}
 #clear{
     cursor: pointer;
 }

@@ -13,8 +13,8 @@ const userProfileSchema = new Schema(
         contact:{type:String, required: false}, 
         gender:{type:String,required:false},
         image:{type:String,required:false},
-        address_id:{type:Schema.Types.ObjectId, ref:'address'},
-        family_id: {type:Schema.Types.ObjectId, ref:'familyProfile'},
+        // address_id:{type:Schema.Types.ObjectId, ref:'address',default:null},
+        // family_id: {type:Schema.Types.ObjectId, ref:'familyProfile',default:null},
     },
     {
         timestamps:true

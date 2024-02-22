@@ -69,6 +69,7 @@ const getDetailsByUserName = async (request,response) => {
         // console.log(request.params.name)
         // console.log(current_user_name)
         const usersProfile = await UserProfile.findOne({user_name: current_user_name})
+        console.log(usersProfile)
         response.json(usersProfile)
 
     }catch(error)

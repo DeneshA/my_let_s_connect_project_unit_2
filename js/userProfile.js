@@ -60,14 +60,14 @@ async function clear(){
     current_address=""
     load_all_address()
     load_all_family_profile()
-    alert_msg.innerHTML=""
+    alert_msg.innerHTMLrHTML= ""
     Load_Event_reminder_alert()
 }
 //Make an alert 
 async function Load_Event_reminder_alert(){
 
     let eventResponse = await axios.get(`http://localhost:3001/events/event/current/month`)
-    if(eventResponse)
+    if(eventResponse.data.length > 0)
     {
      
         reminder_icon.setAttribute('style',"color: #63E6BE")
@@ -84,6 +84,7 @@ async function Load_Event_reminder_alert(){
 //load all the Family Profile
 async function load_all_family_profile(){
     try{
+        family_list.value =""
         let familyResponse = await axios.get('http://localhost:3001/families')
         // console.log(familyResponse.data.length)
         if (familyResponse)
@@ -139,25 +140,31 @@ catch(error)
 // To load currenct user profile details
 async function load_current_user_profile(){
     try{
+
         userResponse = await axios.get(`http://localhost:3001/users/current/user/${user_name.value}`)
         // current_user_profile_response = await axios.get(`http://localhost:3001/users/current/user/Denesh555`)
-        //console.log(userResponse.data)
-        first_name.value = userResponse.data.first_name
-        last_name.value = userResponse.data.last_name
-        user_name.value = userResponse.data.user_name
-        password_u.value = userResponse.data.password
-        email.value = userResponse.data.email
-        gender.value = userResponse.data.gender
-        dob.value = new Date(userResponse.data.dob).toLocaleDateString()
-        contact.value = userResponse.data.contact
-        load_all_address()
-        address_list.value = userResponse.data.address_id
-        load_all_family_profile()
-        family_list.value = userResponse.data.family_id
-        user_image.innerHTML =  `<img class="user-pic" src=${userResponse.data.image}>`
-        image.value= userResponse.data.image
-        username_header.innerHTML = "Welcome ! "+userResponse.data.first_name
-
+        console.log(userResponse.data)
+        if(userResponse.data){
+            first_name.value = userResponse.data.first_name
+            last_name.value = userResponse.data.last_name
+            user_name.value = userResponse.data.user_name
+            password_u.value = userResponse.data.password
+            email.value = userResponse.data.email
+            gender.value = userResponse.data.gender
+            dob.value = new Date(userResponse.data.dob).toLocaleDateString()
+            contact.value = userResponse.data.contact
+            load_all_address()
+            address_list.value = userResponse.data.address_id
+            load_all_family_profile()
+            family_list.value = userResponse.data.family_id
+            user_image.innerHTML =  `<img class="user-pic" src=${userResponse.data.image}>`
+            image.value= userResponse.data.image
+            username_header.innerHTML = "Welcome ! "+userResponse.data.first_name
+        }
+        else
+        {
+            alert_msg.innerHTML = `<h4>The username ${user_name.value} is available to be used for new entriy</h4>`
+        }
     }
     catch(error)
     {
