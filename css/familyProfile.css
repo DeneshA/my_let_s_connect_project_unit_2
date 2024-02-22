@@ -4,7 +4,7 @@ table{
     border-spacing: 1px ;
     text-align: center;
     padding: 10px;
-    max-width: 595px;
+    width: 595px;
     border-collapse: separate;
 }
 
@@ -26,3 +26,25 @@ th{
     scroll-behavior: smooth;
 
 }
+
+
+/* //Responsive feDiffuseLighting */
+@media (min-width:1201px) and (max-width: 1800px) {
+    table{
+        width: 1000px;
+    }
+}
+
+
+
+@media (min-width: 769px) and (max-width: 1200px) {
+
+    table{
+        width: 900px;
+    }
+   
+   
+}
+
+@media (min-width: 400px) and (max-width: 768px) {
+ }
