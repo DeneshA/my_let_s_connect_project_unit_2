@@ -13,24 +13,44 @@
         height: 50px;
     }
 }
+*/
+
 
 
 
 @media (min-width: 769px) and (max-width: 1200px) {
     body{
-        font-size: 25px;
+        font-size: 35px;
+        
+    }
+   
+  
+    button,select,input {
+        font-size: 35px;
+        width: 600px;
+        height: 60px;
+    
+        margin-bottom: 35px;
     }
     .main-container{
-        height: 800px;
+        height: 1000px;
+    }   
+
+    .display-container{
+        overflow: scroll;
+        scroll-behavior: smooth;
+        max-height: 750px;
     }
- 
-    button,select,input {
-        font-size: 25px;
-        width: 500px;
-        height: 50px;
+    .top-menu-bar{
+        height: 130px;
     }
 
-} */
+    .header-banner{
+        height: 150px;
+    }
+   
+}
+
 
 @media (min-width: 400px) and (max-width: 768px) {
     body{

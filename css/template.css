@@ -67,7 +67,7 @@ h2{
     height: 100px;
     width: 100%;
     background-color: white;
-    border: 3px solid #74C0FC;
+    /* border: 3px solid #74C0FC; */
 }
 
 .footer-banner{
@@ -133,15 +133,31 @@ ul{
 /* //Responsive feDiffuseLighting */
 @media (min-width:1201px) and (max-width: 1800px) {
     body{
-        font-size: 30px;
+        font-size: 35px;
     }
     .main-container{
-        height: 800px;
+        height: 700px;
     }
+     
     button,select,input {
-        font-size: 30px;
-        width: 500px;
-        height: 50px;
+        font-size: 35px;
+        width: 600px;
+        height: 60px;
+    
+        margin-bottom: 35px;
+    }
+    
+    .display-container{
+        overflow: scroll;
+        scroll-behavior: smooth;
+        max-height: 650px;
+    }
+    /* .top-menu-bar{
+        height: 130px;
+    } */
+
+    .header-banner{
+        height: 150px;
     }
 }
 
@@ -149,18 +165,35 @@ ul{
 
 @media (min-width: 769px) and (max-width: 1200px) {
     body{
-        font-size: 25px;
+        font-size: 35px;
+        
+    }
+   
+  
+    button,select,input {
+        font-size: 35px;
+        width: 600px;
+        height: 60px;
+    
+        margin-bottom: 35px;
     }
     .main-container{
-        height: 800px;
+        height: 900px;
+    }   
+
+    .display-container{
+        overflow: scroll;
+        scroll-behavior: smooth;
+        max-height: 750px;
     }
- 
-    button,select,input {
-        font-size: 25px;
-        width: 500px;
-        height: 50px;
+    .top-menu-bar{
+        height: 130px;
     }
 
+    .header-banner{
+        height: 150px;
+    }
+   
 }
 
 @media (min-width: 400px) and (max-width: 768px) {
@@ -171,6 +204,10 @@ ul{
         font-size: 20px;
         width: 300px;
         height: 20px;
+        margin-bottom: 10px;
+    }
+    input{
+        height: 30px;
     }
 
     select{
