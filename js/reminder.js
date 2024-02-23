@@ -23,10 +23,10 @@ async function Load_Event_reminder(){
         let data_list = ""
 
         for (const element of listofEventCurrentMonth) {
-            // console.log(element)
+            console.log(element._id)
             let userResponse = await axios.get(`http://localhost:3001/users/user/${element.user_id}`)
             // let addressResponse = await axios.get(`http://localhost:3001/addresses/address/${element.address_id}`)
-            //  console.log(userResponse.data.image)
+             console.log(userResponse.data)
             //  <li class="li-long"> <img src=${userResponse.data.image}> </li>
             data_list += `<div>
                             <div class="container">
@@ -36,7 +36,7 @@ async function Load_Event_reminder(){
                                         <li class="li-long"> Event : ${element.event_name} </li>
                                         <li class="li-long"> Event Date : ${new Date(element.due_date).toDateString()} </li>
                                         <li class="li-long"> Event Forecast :${element.weather_condition}</li>
-                                        <li class="li-long"> Event Description :${element.weather_condition}</li>
+                                        <li class="li-long"> Event Description :${element.description}</li>
                                     </ul>
                                 </div>
                             </div>
@@ -52,13 +52,14 @@ async function Load_Event_reminder(){
 
 }
 
+
 //// Adding master button event
 let user_icon =document.querySelector('#user')
 let family_icon =document.querySelector('#family')
 let address_icon =document.querySelector('#address')
 let home_icon =document.querySelector('#home')
 let event_icon =document.querySelector('#event')
-let task_icon =document.querySelector('#task')
+// let task_icon =document.querySelector('#task')
 let reminder_icon =document.querySelector('#reminder')
 
 user_icon.addEventListener ('click', () => { window.location.href='userprofile.html'})
@@ -66,5 +67,5 @@ family_icon.addEventListener ('click', () => { window.location.href='familyProfi
 address_icon.addEventListener ('click', () => { window.location.href='address.html'})
 home_icon.addEventListener ('click', () => { window.location.href='index.html'})
 event_icon.addEventListener ('click', () => { window.location.href='event.html'})
-task_icon.addEventListener ('click', () => { window.location.href='assignment.html'})
+// task_icon.addEventListener ('click', () => { window.location.href='assignment.html'})
 reminder_icon.addEventListener ('click', () => { window.location.href='reminder.html'})

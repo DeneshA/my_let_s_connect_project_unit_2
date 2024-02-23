@@ -5,8 +5,8 @@ let description = document.querySelector('#description')
 let is_completed = document.querySelector('#is-completed')
 let cost_estimation = document.querySelector('#cost-estimation')
 let weather_condition = document.querySelector('#weather-condition')
-let specialday_note = document.querySelector('#specialday-note')
-let special_notes = document.querySelector('#special_notes')
+let specialday_Note = document.querySelector('#specialday_Note')
+// let special_notes = document.querySelector('#special_notes')
 let invite_families_id = document.querySelector('#invite-families-id')
 let event_list = document.querySelector('#event-list')
 let list_members = document.querySelector('#list-members')
@@ -26,7 +26,7 @@ let remove_all_member = document.querySelector('#remove-all-member')
 //Array List
 let families_array_list = []
 let families_array_list_name = []
-let current_user_id = "65d23e112fd424b3a856be2e"
+let current_user_id = "65d7b7bf46fa93001c4e67c2"
 let currenct_event_UID = "" 
 
 
@@ -43,14 +43,26 @@ clear_btn.addEventListener('click', () => {
     call_clear()
 })
 
-async function get_weather_api(){
-    let input = "l6y0v9"
+async function get_weather_api(postalcode){
+    
     let setDate = "2024-02-22"
-    //let response = await axios.get(`http://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${input}&aqi=no`)
-    let response = await axios.get(`http://api.weatherapi.com/v1/future.json?key=${apiKey}&q=${input}&dt=${setDate}`)
+    let addressResponse = await axios.get(`http://localhost:3001/addresses/address/${postalcode}`)
+    console.log(addressResponse.data.postal_code)
+    let input = addressResponse.data.postal_code
+    let response = await axios.get(`http://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${input}&aqi=no`)
+    // let response = await axios.get(`http://api.weatherapi.com/v1/future.json?key=${apiKey}&q=${input}&dt=${setDate}`)
     //https://api.weatherapi.com/v1/future.json?q=l6y0v9&dt=2024-02-21
-    console.log(response.data)
+    console.log(response.data.current.condition.text)
+    weather_condition.value =  response.data.current.condition.text
 }
+address_list.addEventListener('change', () => {
+    
+    get_weather_api(address_list.value)
+    
+
+})
+
+
 
 async function call_clear (){
     event_name.value = ""
@@ -59,10 +71,10 @@ async function call_clear (){
     is_completed.value = ""
     cost_estimation.value = ""
     weather_condition.value = ""
-    specialday_note.value = ""
-    special_notes.value = ""
+    // specialday_note.value = ""
+    // special_notes.value = ""
     // current_address_UID = ""
-    load_all_family_profile_members()
+    // load_all_family_profile_members()
     current_user_id = ""
     families_array_list = []
     let families_array_list_name = []
@@ -89,7 +101,7 @@ async function load_all_address_list(){
                 let optionalElement = document.createElement('option')
                 //console.log(` Name : ${listOfCodes_n_Countries[0][i].name} Code : ${listOfCodes_n_Countries[0][i].countryCode}  `)
                 optionalElement.value =`${addressResponse.data[i]._id}`
-                optionalElement.text =`${addressResponse.data[i].type} | ${addressResponse.data[i].unit_no} | ${addressResponse.data[i].street_name_1}`
+                optionalElement.text =`${addressResponse.data[i].type} | ${addressResponse.data[i].unit_no} | ${addressResponse.data[i].street_name_1}`                
                 address_list.appendChild(optionalElement)
             }
         }
@@ -103,7 +115,8 @@ async function load_all_address_list(){
 
 async function Load_all_events_by_user_id(){
     try{
-        let eventResponse = await axios.get(`http://localhost:3001/events/user/65d23e112fd424b3a856be2e`)
+        // let eventResponse = await axios.get(`http://localhost:3001/events/user/${current_user_id}`)
+        let eventResponse = await axios.get(`http://localhost:3001/events`)
         // console.log(eventResponse)
         if (eventResponse)
         {
@@ -125,9 +138,9 @@ async function Load_all_events_by_user_id(){
 }
 
 submit_btn.addEventListener('click', () => {
-    if(!event_name.value || !due_date.value || !is_completed)
+    if(!event_name.value || !due_date.value )
     {
-        alert_msg.innerHTML = `<h4>EEvent name, Due dates  & Completed are mandetory fields to Submit</h4>`
+        alert_msg.innerHTML = `<h4>Event name, Due dates  & Completed are mandetory fields to Submit</h4>`
         
     }else{
     create_Event()
@@ -140,12 +153,12 @@ add_member.addEventListener('click', () => {
     {
         families_array_list.push(invite_families_id.value)
         families_array_list_name.push(invite_families_id.innerHTML)
-        // console.log(families_array_list ,families_array_list_name)
+        console.log(families_array_list ,families_array_list_name)
 
         if (families_array_list.length > 0)
         {
             family_table.innerHTML=""
-            create_Dynamic_Table(['Family Name', 'Family Code'],families_array_list,family_table)
+            create_Dynamic_Table(['Family Name', 'Family Code','Relationship'],families_array_list,family_table)
         }
     }
     
@@ -194,8 +207,12 @@ async function Load_Event_reminder_alert(){
 
 
 async function create_Event(){
-    try{
+    // try{
         // validation
+
+        // specialday_Note: {type:String,required:false},
+        // special_notes: {type:String,require:false},
+      
         let data_file = {
             "event_name":event_name.value,
             "due_date":due_date.value,
@@ -203,8 +220,6 @@ async function create_Event(){
             "completed":is_completed.value,
             "cost_estimation": cost_estimation.value,
             "weather_condition": weather_condition.value,
-            "specialday_note":specialday_note.value,
-            "special_notes":special_notes.value,
             "invite_families_id":families_array_list,
             "user_id": current_user_id,
             "address_id":address_list.value
@@ -216,11 +231,11 @@ async function create_Event(){
             }else{
                 alert_msg.innerHTML = `<h4>Unable to Create! Invalid event details</h4>`
             }
-        }
-        catch(error)
-        {
-            throw new Error("Invalid events details entered",error.message)
-        }
+        // }
+        // catch(error)
+        // {
+        //     throw new Error("Invalid events details entered",error.message)
+        // }
     
 
 }
@@ -250,6 +265,7 @@ async function load_all_family_profile_members(){
 async function create_Dynamic_Table(table_Header,tableData,getElement){
     //Table Header
 try{
+    // family_table.innerHTML=""
     //Create table element
     const dynamic_Table = document.createElement('table')
     //const dynamic_Table = document.querySelector('.border-table')
@@ -283,9 +299,9 @@ try{
             table_data_2.textContent = `${familyResponse.data.family_code}`
             t_row.appendChild(table_data_2)
 
-            // const table_data_3 = document.createElement('td')
-            // table_data_3.textContent = tableData[j].relationship
-            // t_row.appendChild(table_data_3)
+            const table_data_3 = document.createElement('td')
+            table_data_3.textContent =`${familyResponse.data.relationship}`
+            t_row.appendChild(table_data_3)
 
         dynamic_Table.appendChild(t_row)
    }
@@ -300,12 +316,14 @@ catch (error){
 
 }
 
-event_list.addEventListener('change', () => {
+event_list.addEventListener('click', () => {
+    family_table.innerHTML =""
     featch_event_detail_by_id()
 })
 
 async function featch_event_detail_by_id() {
     try{
+        
         let eventResponse = await axios.get(`http://localhost:3001/events/${event_list.value}`)
 
         event_name.value = eventResponse.data.event_name
@@ -314,17 +332,15 @@ async function featch_event_detail_by_id() {
         is_completed.value = eventResponse.data.completed
         cost_estimation.value = eventResponse.data.cost_estimation
         weather_condition.value = eventResponse.data.weather_condition
-        specialday_note.value = eventResponse.data.specialday_note
-        special_notes.value = eventResponse.data.special_notes
         current_user_id = eventResponse.data.user_id
         families_array_list = eventResponse.data.invite_families_id
         currenct_event_UID = eventResponse.data._id
         address_list.value = eventResponse.data.address_id
-        // console.log(families_array_list)
+        console.log(families_array_list)
         // let list_of_family_menbers = familyResponse.data
         if (families_array_list.length > 0)
         {
-            create_Dynamic_Table(['Family Name', 'Family Code'],families_array_list,family_table)
+            create_Dynamic_Table(['Family Name', 'Family Code','Relationship'],families_array_list,family_table)
         }
     }catch(error){
         throw new Error("Invalid Event search",error.message)
@@ -354,8 +370,6 @@ async function update_Event(){
             "completed":is_completed.value,
             "cost_estimation": cost_estimation.value,
             "weather_condition": weather_condition.value,
-            "specialday_note":specialday_note.value,
-            "special_notes":special_notes.value,
             "invite_families_id":families_array_list,
             "user_id": current_user_id,
             "address_id":address_list.value
@@ -420,7 +434,7 @@ let family_icon =document.querySelector('#family')
 let address_icon =document.querySelector('#address')
 let home_icon =document.querySelector('#home')
 let event_icon =document.querySelector('#event')
-let task_icon =document.querySelector('#task')
+// let task_icon =document.querySelector('#task')
 let reminder_icon =document.querySelector('#reminder')
 
 user_icon.addEventListener ('click', () => { window.location.href='userprofile.html'})
@@ -428,5 +442,5 @@ family_icon.addEventListener ('click', () => { window.location.href='familyProfi
 address_icon.addEventListener ('click', () => { window.location.href='address.html'})
 home_icon.addEventListener ('click', () => { window.location.href='index.html'})
 event_icon.addEventListener ('click', () => { window.location.href='event.html'})
-task_icon.addEventListener ('click', () => { window.location.href='assignment.html'})
+// task_icon.addEventListener ('click', () => { window.location.href='assignment.html'})
 reminder_icon.addEventListener ('click', () => { window.location.href='reminder.html'})

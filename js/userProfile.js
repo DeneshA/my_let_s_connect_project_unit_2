@@ -9,13 +9,14 @@ let gender = document.querySelector('#gender')
 let dob = document.querySelector('#dob')
 let contact = document.querySelector('#contact')
 let address = document.querySelector('#address')
-let family_code = document.querySelector('#family-code')
+// let family_code = document.querySelector('#family-code')
 let image = document.querySelector('#image')
 let user_image= document.querySelector('.user-image')
 let username_header = document.querySelector('#username-header')
 let address_list = document.querySelector('#address-list')
-let family_list = document.querySelector('#family-list')
+// let family_list = document.querySelector('#family-list')
 let alert_msg = document.querySelector('#alert-msg')
+let users_list= document.querySelector('#users-list')
 
 //Button Web Element
 let clear_btn = document.querySelector('#clear')
@@ -32,8 +33,9 @@ let User_UID
 let current_address =""
 
 load_all_address()
-load_all_family_profile()
+// load_all_family_profile()
 Load_Event_reminder_alert()
+load_all_users()
 
 window.onload = () => {
     // load_current_user_profile()    
@@ -52,17 +54,53 @@ async function clear(){
     dob.value = ""
     contact.value =""
     address_list.value =""
-    family_list.value=""
+    // family_list.value=""
     image.value =""
     userResponse=""
     current_UName=""
     User_UID=""
     current_address=""
     load_all_address()
-    load_all_family_profile()
+    // load_all_family_profile()
     alert_msg.innerHTMLrHTML= ""
     Load_Event_reminder_alert()
+    load_all_users()
 }
+
+async function  load_all_users(){
+try{
+    let response = await axios.get(`http://localhost:3001/users`)
+    if(response){
+        for(let i=0;i<response.data.length;i++ )
+                    {
+                        let optionalElement = document.createElement('option')
+                        //console.log(` Name : ${listOfCodes_n_Countries[0][i].name} Code : ${listOfCodes_n_Countries[0][i].countryCode}  `)
+                        optionalElement.value =`${response.data[i]._id}`
+                        optionalElement.text =`${response.data[i].first_name} - ${response.data[i].last_name}`
+                        users_list.appendChild(optionalElement)
+                    }
+    }
+}
+catch(error)
+{
+    throw new Error("Unable to load Address file",error.message)
+}
+}
+
+
+users_list.addEventListener('click', async () =>{
+try{
+    let response = await axios.get(`http://localhost:3001/users/user/${users_list.value}`)
+    user_name.value = response.data.user_name
+    load_current_user_profile()
+
+}catch(errer){
+    throw new Error("Unable to load Address file",error.message)
+}
+   
+    
+})
+
 //Make an alert 
 async function Load_Event_reminder_alert(){
 
@@ -81,30 +119,30 @@ async function Load_Event_reminder_alert(){
 }
 
 
-//load all the Family Profile
-async function load_all_family_profile(){
-    try{
-        family_list.value =""
-        let familyResponse = await axios.get('http://localhost:3001/families')
-        // console.log(familyResponse.data.length)
-        if (familyResponse)
-        {
-            for(let i=0;i<familyResponse.data.length;i++ )
-            {
-                let optionalElement = document.createElement('option')
-                //console.log(` Name : ${listOfCodes_n_Countries[0][i].name} Code : ${listOfCodes_n_Countries[0][i].countryCode}  `)
-                optionalElement.value =`${familyResponse.data[i]._id}`
-                optionalElement.text =`${familyResponse.data[i].family_name} - ${familyResponse.data[i].family_code}`
-                family_list.appendChild(optionalElement)
-            }
-        }
-    }
-    catch(error)
-    {
-        throw new Error("Unable to load Address file",error.message)
-    }
+// //load all the Family Profile
+// async function load_all_family_profile(){
+//     try{
+//         family_list.value =""
+//         let familyResponse = await axios.get('http://localhost:3001/families')
+//         // console.log(familyResponse.data.length)
+//         if (familyResponse)
+//         {
+//             for(let i=0;i<familyResponse.data.length;i++ )
+//             {
+//                 let optionalElement = document.createElement('option')
+//                 //console.log(` Name : ${listOfCodes_n_Countries[0][i].name} Code : ${listOfCodes_n_Countries[0][i].countryCode}  `)
+//                 optionalElement.value =`${familyResponse.data[i]._id}`
+//                 optionalElement.text =`${familyResponse.data[i].family_name} - ${familyResponse.data[i].family_code}`
+//                 family_list.appendChild(optionalElement)
+//             }
+//         }
+//     }
+//     catch(error)
+//     {
+//         throw new Error("Unable to load Address file",error.message)
+//     }
     
-    }
+//     }
     
 
 
@@ -116,6 +154,7 @@ user_name.addEventListener('change', () => {
 //load address in to ti drop down
 async function load_all_address(){
 try{
+    address_list.value =""
     let addressResponse = await axios.get('http://localhost:3001/addresses')
     // console.log(addressResponse.data.length)
     if (addressResponse)
@@ -155,8 +194,8 @@ async function load_current_user_profile(){
             contact.value = userResponse.data.contact
             load_all_address()
             address_list.value = userResponse.data.address_id
-            load_all_family_profile()
-            family_list.value = userResponse.data.family_id
+            // load_all_family_profile()
+            // family_list.value = userResponse.data.family_id
             user_image.innerHTML =  `<img class="user-pic" src=${userResponse.data.image}>`
             image.value= userResponse.data.image
             username_header.innerHTML = "Welcome ! "+userResponse.data.first_name
@@ -196,13 +235,14 @@ async function save_and_update_user_profile(){
         "dob": dob.value,
         "gender": gender.value,
         "address_id": address_list.value,
-        "family_id":family_list.value,
+        // "family_id":family_list.value,
         "image":image.value
         }
         
         let  response = await axios.post('http://localhost:3001/users',data_file)
         if(response){
-        
+            address_list.value =""
+            // family_list.value = ""
             alert_msg.innerHTML = `<h4>User profile created Successfully</h4>`
         }else{
             alert_msg.innerHTML = `<h4>Unable to Save! Invalid User profile</h4>`
@@ -238,7 +278,7 @@ async function update_user_profile(){
         "dob": dob.value,
         "gender": gender.value,
         "address_id": address_list.value,
-        "family_id":family_list.value,
+        // "family_id":family_list.value,
         "image":image.value
         }      
 
@@ -249,6 +289,8 @@ async function update_user_profile(){
             //if user existing then update the user profile
             let  response = await axios.put(`http://localhost:3001/users/${validate_existing_user.data._id}`,data_file)
             if(response){
+                address_list.value =""
+                // family_list.value = ""
         
                 alert_msg.innerHTML = `<h4>User profile updated Successfully</h4>`
             }
@@ -287,7 +329,8 @@ async function delete_user_profile(){
             let  response = await axios.delete(`http://localhost:3001/users/${validate_existing_user.data._id}`)
 
             if(response){
-        
+                address_list.value =""
+                // family_list.value = ""
                 alert_msg.innerHTML = `<h4>User profile Deteted Successfully</h4>`
             }
             
@@ -308,7 +351,7 @@ let family_icon =document.querySelector('#family')
 let address_icon =document.querySelector('#address')
 let home_icon =document.querySelector('#home')
 let event_icon =document.querySelector('#event')
-let task_icon =document.querySelector('#task')
+// let task_icon =document.querySelector('#task')
 let reminder_icon =document.querySelector('#reminder')
 
 user_icon.addEventListener ('click', () => { window.location.href='userprofile.html'})
@@ -316,6 +359,5 @@ family_icon.addEventListener ('click', () => { window.location.href='familyProfi
 address_icon.addEventListener ('click', () => { window.location.href='address.html'})
 home_icon.addEventListener ('click', () => { window.location.href='index.html'})
 event_icon.addEventListener ('click', () => { window.location.href='event.html'})
-task_icon.addEventListener ('click', () => { window.location.href='assignment.html'})
+// task_icon.addEventListener ('click', () => { window.location.href='assignment.html'})
 reminder_icon.addEventListener ('click', () => { window.location.href='reminder.html'})
-
