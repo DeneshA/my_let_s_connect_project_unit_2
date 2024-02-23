@@ -236,7 +236,7 @@ h2{
 
 /* //Responsive feDiffuseLighting */
 
-@media (min-width:1201px) and (max-width: 1800px) {
+@media (min-width:1201px)  {
     body{
         font-size: 35px;
     }
