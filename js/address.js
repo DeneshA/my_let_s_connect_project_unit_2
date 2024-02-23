@@ -266,7 +266,7 @@ async function Load_Event_reminder_alert(){
 
 }
 
-/
+
 //// Adding master button event
 let user_icon =document.querySelector('#user')
 let family_icon =document.querySelector('#family')
