@@ -34,9 +34,9 @@ async function Load_Event_reminder(){
                                 <div class="event_list">
                                     <ul class="ul-long">                            
                                         <li class="li-long"> Event : ${element.event_name} </li>
-                                        <li class="li-long"> Event Date : ${new Date(element.due_date).toDateString()} </li>
-                                        <li class="li-long"> Event Forecast :${element.weather_condition}</li>
-                                        <li class="li-long"> Event Description :${element.description}</li>
+                                        <li class="li-long"> Date : ${new Date(element.due_date).toDateString()} </li>
+                                        <li class="li-long"> Forecast :${element.weather_condition}</li>
+                                        <li class="li-long"> Description :${element.description}</li>
                                     </ul>
                                 </div>
                             </div>

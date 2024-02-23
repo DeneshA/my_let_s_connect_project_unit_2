@@ -64,6 +64,40 @@ The goal is to integrate Weather and Holiday APIs to enhance the Let's Connect a
 
 #Technologies
 
+# ----# Forn-end 
+      ----# HTML , CSS , JavaScript
+# ----# APIs            
+      ----# WeatherAPI
+
+# ----# IDE - Visual Studio Code
+
+# References
+      # ---# CSS
+      https://www.geeksforgeeks.org/css-tooltip-fade-in-animation/
+      https://www.geeksforgeeks.org/primer-css-fade-down-animation/
+      https://blog.hubspot.com/website/css-fade-in
+
+      # ---# HTML
+
+      # ---# JavaScript
+
 #References
 
 #Screenshots
+--#Home Page
+![alt text](image-10.png)
+
+--#User Profile
+![alt text](image-11.png)
+
+--#Family Profile
+![alt text](image-12.png)
+
+--#Address
+![alt text](image-13.png)
+
+--#Reminder
+![alt text](image-14.png)
+
+--#Event
+![alt text](image-15.png)
