@@ -54,8 +54,8 @@ The goal is to integrate Weather and Holiday APIs to enhance the Let's Connect a
 ![alt text](image-9.png)
 
 #Wireframe
-![alt text](image-5.png)
-![alt text](image-6.png)
+![alt text](image-16.png)
+![alt text](image-17.png)
 
 
 #MVC
@@ -64,8 +64,10 @@ The goal is to integrate Weather and Holiday APIs to enhance the Let's Connect a
 
 #Technologies
 
-# ----# Forn-end 
-      ----# HTML , CSS , JavaScript
+# ----# Fornt-end 
+      ----# HTML , CSS, Javascript
+# ----# Back-end 
+      ----# Mongo Altes DB, JavaScript
 # ----# APIs            
       ----# WeatherAPI
 
