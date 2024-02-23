@@ -50,6 +50,8 @@ The goal is to integrate Weather and Holiday APIs to enhance the Let's Connect a
     As a user, I would like to retrieve real-time weather conditions and information about special holidays on a specific date when planning an event. This feature will help me make adjustments to my plans based on the weather and be aware of any significant holidays.
 
 
+
+
 #ERD
 ![alt text](image-9.png)
 

@@ -95,7 +95,7 @@ const deleteEvent = async (request,response) => {
         return response.status(500).send(error.message)
     }
 } 
-
+//Reminder Sort events for next 3 month
 const get_event_current_month = async (request,response) => {
     try{
         
